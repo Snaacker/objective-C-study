@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F27" minimumToolsVersion="Automatic">
+    <entity name="Chore" representedClassName="ChoreMO" syncable="YES">
+        <attribute name="chore_name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="chore_log" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChoreLog" inverseName="chore_done" inverseEntity="ChoreLog" syncable="YES"/>
+    </entity>
+    <entity name="ChoreLog" representedClassName="ChoreLogMO" syncable="YES">
+        <attribute name="when" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="chore_done" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Chore" inverseName="chore_log" inverseEntity="Chore" syncable="YES"/>
+        <relationship name="person_who_did_it" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="chore_log" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Person" representedClassName="PersonMO" syncable="YES">
+        <attribute name="person_name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="chore_log" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChoreLog" inverseName="person_who_did_it" inverseEntity="ChoreLog" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Chore" positionX="-110" positionY="-9" width="128" height="73"/>
+        <element name="Person" positionX="261" positionY="-9" width="128" height="73"/>
+        <element name="ChoreLog" positionX="72" positionY="-9" width="128" height="88"/>
+    </elements>
+</model>
